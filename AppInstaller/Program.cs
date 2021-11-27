@@ -7,10 +7,8 @@ namespace AppInstaller
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string AppName, string AppVersion, string[] args)
         {
-            string AppName = "DataManager_216";
-            string AppVersion = "1_0_0_1";
             int HeaderSize = 100;
 
             //Header
@@ -24,10 +22,44 @@ namespace AppInstaller
             Console.WriteLine(String.Concat(Enumerable.Repeat("/", HeaderSize)));
             Console.WriteLine(String.Concat(Enumerable.Repeat("/", HeaderSize)));
             Console.WriteLine(String.Concat(Enumerable.Repeat("_", HeaderSize)));
+            Console.WriteLine("Beginning Install..");
             System.Threading.Thread.Sleep(2000);
 
+            //End old process if its still running
+            if (ProcessManager.CheckForRunningProcess(AppName))
+            {
+                Console.Write("Hold on. We need to shut down the old Applications background processes: ");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error");
+                Console.ForegroundColor = ConsoleColor.White;
+
+                if(ProcessManager.KillRunningProcesses(AppName) >0)
+                {
+                    Console.WriteLine("No background processes have been shut down: ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("Ok");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+
+                if (ProcessManager.CheckForRunningProcess(AppName))
+                {
+                    Console.Write("Processes are still running. Cannot continue: ");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Error");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    EndProgram();
+                }
+            }
+            else
+            {
+                Console.WriteLine("No background processes are running. Good to proceed with the installation: ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("Ok");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+
             //Check if there are new files available
-            string Newpath = @"C:\Users\brend\OneDrive\Desktop\216\DataManager\Production\" + AppName + "_" + AppVersion + @"\";
+            string Newpath = @"C:\Users\brend\OneDrive\Desktop\216\" + AppName + @"\Production\" + AppName + "_" + AppVersion + @"\";
 
             if (!System.IO.Directory.Exists(Newpath))
             {
@@ -56,7 +88,7 @@ namespace AppInstaller
                 }
 
                 //List Old Files
-                string path = @"C:\Users\brend\OneDrive\Desktop\216\DataManager\Current Install\";
+                string path = @"C:\Users\brend\OneDrive\Desktop\216\" + AppName + @"\Current Install\";
                 string[] files = System.IO.Directory.GetFiles(path);
                 foreach (string file in files)
                 {
