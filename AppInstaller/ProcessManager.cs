@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Windows;
 
 namespace AppInstaller
 {
@@ -36,7 +37,6 @@ namespace AppInstaller
             {
                 if (process.ProcessName.ToLower() == AppName.ToLower())
                 {
-
                     try
                     {
                         process.Kill();
