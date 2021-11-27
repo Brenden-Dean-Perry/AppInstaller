@@ -1,0 +1,72 @@
+#Junk files
+[Tt]humbs.db
+*.DS_Store
+
+#Webstorm files
+*.idea
+.idea
+.idea/
+
+#database
+*.ldf
+*.mdf
+
+#Visual studio files
+*.docstates
+*.[Oo]bj
+*.dat
+*.crc
+*.exe
+*.pbd
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*._i.c
+*._p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+ipch/
+obj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+Ankh.NoLoad
+
+#SRS Files 
+.rdl.data
+
+#Tooling 
+_ReSharper*/
+*.[Rr]e[Ss]harper
+packages/
+publish/
+
+#Subversion files
+.svn
+
+#Office Temp files
+~$*
+
+#Rails Heroku and other bits to ignore
+*.log
+*sqlite3
+db/*.sqlite3
+.bundle
+log/*
+tmp/*
+public/system/*
+
+#data dirs
+CI
+CI/*
+.vs
