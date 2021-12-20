@@ -257,14 +257,14 @@ namespace AppInstaller
             System.Threading.Thread.Sleep(2000);
         }
 
-        private static void EndProgram(bool Successful)
+        private async static void EndProgram(bool Successful)
         {
             //Close
             if(Successful == true)
             {
                 Console.WriteLine("");
-                Console.WriteLine("Everything seems fine. Wating 10 seconds, then closing.");
-                System.Threading.Thread.Sleep(10000);
+                Console.WriteLine("Everything seems fine. Wating 4 seconds, then closing.");
+                await System.Threading.Tasks.Task.Run(() => System.Threading.Thread.Sleep(4000));
             }
             else
             {
