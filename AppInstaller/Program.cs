@@ -9,7 +9,7 @@ namespace AppInstaller
     {
         static void Main(string[] args)
         {
-            string ParentPath = @"C:\Users\brend\OneDrive\Desktop\216\";
+            string ParentPath = @"C:\Users\brend\Desktop\Apps";
 
             //Paramater check
             ParamaterValidation(args);
@@ -244,14 +244,14 @@ namespace AppInstaller
         private static void BuildHeader(string AppName, string AppVersion, int HeaderSize)
         {
             Console.WriteLine(String.Concat(Enumerable.Repeat("_", HeaderSize)));
-            Console.WriteLine(String.Concat(Enumerable.Repeat("/", HeaderSize)));
-            Console.WriteLine(String.Concat(Enumerable.Repeat("/", HeaderSize)));
+            Console.WriteLine(String.Concat(Enumerable.Repeat("*", HeaderSize)));
+            Console.WriteLine(String.Concat(Enumerable.Repeat("*", HeaderSize)));
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("AppInstaller - " + AppName);
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Installing version: " + AppVersion);
-            Console.WriteLine(String.Concat(Enumerable.Repeat("/", HeaderSize)));
-            Console.WriteLine(String.Concat(Enumerable.Repeat("/", HeaderSize)));
+            Console.WriteLine(String.Concat(Enumerable.Repeat("*", HeaderSize)));
+            Console.WriteLine(String.Concat(Enumerable.Repeat("*", HeaderSize)));
             Console.WriteLine(String.Concat(Enumerable.Repeat("_", HeaderSize)));
             Console.WriteLine("Beginning Install..");
             System.Threading.Thread.Sleep(2000);
